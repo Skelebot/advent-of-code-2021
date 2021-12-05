@@ -41,10 +41,12 @@ fn solve1(nums: &[String]) -> u32 {
 fn solve2(nums: &[String]) -> u32 {
     let mut onums: Vec<&str> = nums.iter().map(|s| s.as_ref()).collect();
     let mut conums: Vec<&str> = nums.iter().map(|s| s.as_ref()).collect();
-    
+
     let mut bitpos = 0;
     'main: loop {
-        if onums.len() == 1 { break 'main; }
+        if onums.len() == 1 {
+            break 'main;
+        }
         let mut one_counter = 0;
         for line in &onums {
             match line.chars().nth(bitpos) {
@@ -64,7 +66,9 @@ fn solve2(nums: &[String]) -> u32 {
 
     bitpos = 0;
     'main2: loop {
-        if conums.len() == 1 { break 'main2; }
+        if conums.len() == 1 {
+            break 'main2;
+        }
         let mut one_counter = 0;
         for line in &conums {
             match line.chars().nth(bitpos) {
@@ -81,7 +85,7 @@ fn solve2(nums: &[String]) -> u32 {
         }
         bitpos += 1;
     }
-    
+
     assert_eq!(onums.len(), 1);
     assert_eq!(conums.len(), 1);
 
@@ -89,14 +93,14 @@ fn solve2(nums: &[String]) -> u32 {
     let mut coval = 0;
     let bits = onums[0].len();
     for bit in 0..bits {
-        if onums[0].chars().nth(bit)  == Some('1') {
+        if onums[0].chars().nth(bit) == Some('1') {
             oval |= 1 << (bits - bit - 1);
         }
-        if conums[0].chars().nth(bit)  == Some('1') {
+        if conums[0].chars().nth(bit) == Some('1') {
             coval |= 1 << (bits - bit - 1);
         }
     }
-    
+
     oval * coval
 }
 

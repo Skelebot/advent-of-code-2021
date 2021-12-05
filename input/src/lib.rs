@@ -6,7 +6,7 @@ use std::{
     str::FromStr,
 };
 
-fn read_file<P: AsRef<Path>>(path: P) -> BufReader<File> {
+pub fn read_file<P: AsRef<Path>>(path: P) -> BufReader<File> {
     let file = File::open(path).expect("failed to read file");
     BufReader::new(file)
 }
