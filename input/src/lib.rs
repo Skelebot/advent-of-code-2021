@@ -25,3 +25,18 @@ where
         })
         .collect()
 }
+
+pub fn read_line_split<T, P: AsRef<Path>>(path: P, delim: &str) -> Vec<T>
+where
+    T: FromStr,
+    <T as FromStr>::Err: Debug,
+{
+    read_file(path)
+        .lines()
+        .next()
+        .expect("file contained zero lines")
+        .unwrap()
+        .split(delim)
+        .map(|s| s.trim().parse().expect("failed to parse"))
+        .collect()
+}
