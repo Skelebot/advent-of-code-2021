@@ -166,7 +166,7 @@ mod test {
             for c in 0..10 {
                 let mut covered_by = 0;
                 //for line in lines.iter().filter(|c| c.is_hv()) {
-                    for line in lines.iter() {
+                for line in lines.iter() {
                     if line.covers((c, r)) {
                         covered_by += 1;
                         if covered_by == 2 {
